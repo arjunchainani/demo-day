@@ -2,9 +2,21 @@
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-#result {
+#results {
     font-size: 24px;
     color:aqua;
     font-weight:bold;
     font-style: italic;
+}
+
+#entertainment_list {
+    display: none;
+}
+
+#shopping_list {
+    display: none;
+}
+
+#eating_list {
+    display: none;
 }
