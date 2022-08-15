@@ -2,21 +2,145 @@
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-#results {
+
+:root {
+    --primary: #750a02;
+    --secondary: #ff1200;
+    --accent: #f74d6c;
+}
+
+#input_container {
+    /*
+        @NOTE using responsive units (vw and vh) here.
+        learn more here: https://www.w3schools.com/cssref/css_units.asp
+    */
+    /* size and colors */
+    width: 90vw;
+    height: 90vh;
+    background-color: var(--secondary);
+    
+    /* CSS box model */
+    margin: 0 auto;
+    padding: 1%;
+    border-radius: 10px;
+
+    /* flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#result {
     font-size: 24px;
-    color:aqua;
-    font-weight:bold;
+    color: red;
+    font-weight: bold;
     font-style: italic;
+    text-decoration: underline;
 }
 
-#entertainment_list {
+#result2 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#input_container {
+    padding-left: 550px;
+    padding-top: 400px;
+}
+
+#entertainment_list,
+#shopping_list,
+#eating_list,
+#hotel_list {
     display: none;
 }
 
-#shopping_list {
-    display: none;
+body {
+    background-color: #888888;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;
 }
 
-#eating_list {
+/* Change all these class names */
+
+#iaqi_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iaqi_stats {
     display: none;
+    width: 400px;
+    height: 215px;
+    text-align: left;
+    padding: 5px 0;
+    background-color: #888888;
+    border-radius: 5px;
+    transition: 0.5s;
+}
+
+#iaqi_stats div {
+    height: 20px;
+    margin: 5px 0;
+    padding: 5px;
+    text-shadow: 2px 2px #000000;
+    transition: 0.33s;
+}
+
+#o3 {
+    width: 272px;
+    background-color: #00ff00;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#co {
+    width: 220px;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#pm10 {
+    width: 220px;
+    background-color: #0000ff;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#pm25 {
+    width: 200px;
+    background-color: #ff8800;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#no2 {
+    width: 200px;
+    background-color: #8800ff;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#so2 {
+    width: 168px;
+    background-color: #00ffff;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
 }
