@@ -1,18 +1,17 @@
-import { aqi, co, o3, pm10, pm25, no2, so2 } from './main.js'
-console.log('AQI:', aqi);
+// console.log('AQI:', aqi);
 
-const iaqiData = {
-    "stats": {
-        "o3": o3,
-        "co": co,
-        "pm10": pm10,
-        "pm25": pm25,
-        "no2": no2,
-        "so2": so2,
-    },
+// const iaqiData = {
+//     "stats": {
+//         "o3": o3,
+//         "co": co,
+//         "pm10": pm10,
+//         "pm25": pm25,
+//         "no2": no2,
+//         "so2": so2,
+//     },
     
-    "aqi": aqi,
-}
+//     "aqi": aqi,
+// }
 
 // if (apiFetched === true) {
 //     o3Div.style.width = iaqiData.stats.o3 + '%';

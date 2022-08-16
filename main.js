@@ -21,7 +21,15 @@ const hotelOption1 = document.getElementById('hotel_location1');
 const hotelOption2 = document.getElementById('hotel_location2');
 const iaqiContainer = document.getElementById('iaqi_stats');
 
+// Table divs
+const coDiv = document.getElementById('co');
+const pm10Div = document.getElementById('pm10');
+const pm25Div = document.getElementById('pm25');
+const no2Div = document.getElementById('no2');
+const so2Div = document.getElementById('so2');
+
 let statDivs = document.querySelectorAll("#iaqi_stats div");
+let pDivs = document.querySelectorAll('#iaqi_stats div p');
 
 let city, orig;
 let placeID;
@@ -46,14 +54,16 @@ const iaqiData = {
 }
 
 function parseText(input) {
-    let splitText = input.split(' ');
-    orig = input;
-    // let parsed;  
-    // console.log('Input before parsing:', input);
-    console.log('Split text:', splitText);
-    let parsed = splitText.join('%20');
-    console.log('Parsed:', parsed);
-    return parsed;
+    // let splitText = input.split(' ');
+    // orig = input;
+    // // let parsed;  
+    // // console.log('Input before parsing:', input);
+    // console.log('Split text:', splitText);
+    // let parsed = splitText.join('%20');
+    // console.log('Parsed:', parsed);
+
+    let newText = input.replaceAll(' ', '%20');
+    return newText;
 }
 
 function getAPIs() {
@@ -67,7 +77,7 @@ function getAPIs() {
         })
         .then(displayData)
         .catch(function(error) {
-            console.log('Location not found 1');
+            console.log('Location not found 1', error);
         })
         
     // geoapify API
@@ -123,8 +133,15 @@ function displayData(results) {
     console.log('Running if statement. Statdivs:', statDivs);
     for (let i = 0; i < statDivs.length; i++) {
         let statValue = stats[i];
-        console.log('Statvalue:', statValue);
         statDivs[i].style.width = statValue + "%";
+    }
+
+    for (let i = 0; i < pDivs.length; i++) {
+        console.log('pDiv', pDivs[i]);
+        let statValue = stats[i];
+        console.log('Statvalue:', statValue);
+        pDivs[i].innerHTML += `- ${statValue}`;
+        console.log('innerHTML:', pDivs[i]);
     }
 }
 
@@ -212,11 +229,8 @@ submitButton.onclick = function(event) {
 
     bottom.scrollIntoView();
 
-    let val = parseText(inputBox.value);
+    city = parseText(inputBox.value);
 
-    city = val;
     getPlaceInfoAPI(city);
     iaqiContainer.style.display = 'flex';
 }
-
-export { aqi, co, o3, pm10, pm25, no2, so2 }
