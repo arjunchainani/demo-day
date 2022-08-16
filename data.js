@@ -31,9 +31,7 @@ const iaqiData = {
 //         statDivs[i].style.width = statValue + "%"
 //     }
 // }
-<<<<<<< HEAD
-=======
+
 // arjun can you try this out, maybe it'll work?
 // I'm just unsure about the iaqiData.aqi[aqi]
 // from line 33
->>>>>>> 030c94ce029f1b2d94d685110f521e16096ace2b

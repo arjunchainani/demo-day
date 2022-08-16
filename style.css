@@ -22,7 +22,7 @@ body {
 
 #name {
     background-color: var(--primary);
-    height: 800px;
+    height: 825px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     display: flex;
@@ -41,28 +41,24 @@ h1 {
     font-size: 20px;
 }
 
+#input {
+    /* flexbox */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 #input_container {
     /*
         @NOTE using responsive units (vw and vh) here.
         learn more here: https://www.w3schools.com/cssref/css_units.asp
     */
     /* size and colors */
-    /* width: 1350px;
-    height: 510px; */
-    width: 90vw;
-    height: 90vh;
     background-color: var(--secondary);
     
     /* CSS box model */
-    margin: 0 auto;
-    padding: 1%;
-    border-radius: 10px;
 
-    /* flexbox */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 #result {
@@ -80,8 +76,6 @@ h1 {
 
 #input_container {
     text-align: center;
-    padding-left: 550px;
-    padding-top: 400px;
 }
 
 #entertainment_list,
