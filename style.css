@@ -49,6 +49,9 @@ h1 {
     /* size and colors */
     /* width: 1350px;
     height: 510px; */
+    width: 90vw;
+    height: 90vh;
+    background-color: var(--secondary);
     
     /* CSS box model */
     margin: 0 auto;
@@ -77,6 +80,8 @@ h1 {
 
 #input_container {
     text-align: center;
+    padding-left: 550px;
+    padding-top: 400px;
 }
 
 #entertainment_list,
@@ -84,6 +89,22 @@ h1 {
 #eating_list,
 #hotel_list {
     display: none;
+}
+
+/* Change all these class names */
+
+#iaqi_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: #888888;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;
 }
 
 /* Change all these class names */
