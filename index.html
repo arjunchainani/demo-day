@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Day Project</title>
     <link rel="stylesheet" href="style.css">
-    <script defer src="script.js"></script>
-    <script defer src="data.js"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.6.0.js"
-        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-        crossorigin="anonymous">
-    </script>
-
+    <script defer type="module" src="data.js"></script>
+    <script defer type="module" src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
+        </script>
 </head>
+
 <body>
+    <div id="name">
+        <h1>Welcome to AirVision<br><p id="discover">Discover the World.</p></h1>
+    </div>
     <div id="input_container">
-        <form>
-            <div><input id="inputBox" type="text" placeholder="Enter location here"></div>
-            <div><button id="submit_button">Submit</button></div>
-        </form>
+        <section id="input">
+            <form>
+                <div><input id="inputBox" type="search" placeholder="Enter location here" autocomplete="address-level1"></div>
+                <div><button id="submit_button">Search</button></div>
+            </form>
+        </section>
         <section id="results">
             <p id="result"></p>
             <p id=result2></p>
@@ -52,6 +56,35 @@
                 <li id="eating_location2"></li>
             </ul>
         </section>
+        <br>
+        <br>
+        <section id="hotels">
+            <p id="hotel_clarifier"></p>
+            <ul id="hotel_list">
+                <li id="hotel_location1"></li>
+                <li id="hotel_location2"></li>
+            </ul>
+        </section>
+        <br>
+        <br>
+        <section id="hotels">
+            <p id="hotel_clarifier"></p>
+            <ul id="hotel_list">
+                <li id="hotel_location1"></li>
+                <li id="hotel_location2"></li>
+            </ul>
+        </section>
+    </div>
+    <div id="iaqi_container">
+        <div id="iaqi_stats">
+            <div id="o3">O3</div>
+            <div id="co">Co</div>
+            <div id="pm10">PM10</div>
+            <div id="pm25">PM2.5</div>
+            <div id="no2">NO2</div>
+            <div id="so2">SO2</div>
+        </div>
     </div>
 </body>
+
 </html>

@@ -2,21 +2,217 @@
     margin: 0;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-#results {
-    font-size: 24px;
-    color:aqua;
+
+:root {
+    --primary: #00eaff;
+    --secondary: #341c58;
+    --accent: #ff0000;
+    --glow1: #173753;
+    --glow2: #6daedb;
+}
+
+body {
+    background-color: #888888;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff;
+    text-shadow: 5px 5px 5px #000000;
+    background-color: var(--secondary);
+}
+
+#name {
+    background-color: var(--primary);
+    height: 800px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 100px;
+    color: aqua;
     font-weight:bold;
+}
+
+#discover {
+    font-size: 20px;
+}
+
+#input_container {
+    /*
+        @NOTE using responsive units (vw and vh) here.
+        learn more here: https://www.w3schools.com/cssref/css_units.asp
+    */
+    /* size and colors */
+    /* width: 1350px;
+    height: 510px; */
+    
+    /* CSS box model */
+    margin: 0 auto;
+    padding: 1%;
+    border-radius: 10px;
+
+    /* flexbox */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#result {
+    font-size: 24px;
+    color: red;
+    font-weight: bold;
     font-style: italic;
+    text-decoration: underline;
 }
 
-#entertainment_list {
+#result2 {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#input_container {
+    text-align: center;
+}
+
+#entertainment_list,
+#shopping_list,
+#eating_list,
+#hotel_list {
     display: none;
 }
 
-#shopping_list {
-    display: none;
+/* Change all these class names */
+
+#iaqi_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#eating_list {
+#iaqi_stats {
     display: none;
+    width: 400px;
+    height: 215px;
+    text-align: left;
+    padding: 5px 0;
+    background-color: #888888;
+    border-radius: 5px;
+    transition: 0.5s;
+    justify-content: center;
+}
+
+#iaqi_stats div {
+    height: 20px;
+    margin: 5px 0;
+    padding: 5px;
+    text-shadow: 2px 2px #000000;
+    transition: 0.33s;
+}
+
+#o3 {
+    width: 272px;
+    background-color: #00ff00;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#co {
+    width: 220px;
+    background-color: #ff0000;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#pm10 {
+    width: 220px;
+    background-color: #0000ff;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#pm25 {
+    width: 200px;
+    background-color: #ff8800;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#no2 {
+    width: 200px;
+    background-color: #8800ff;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+#so2 {
+    width: 168px;
+    background-color: #00ffff;
+    color: white;
+    font-weight: bold;
+    font-style:italic;
+    text-decoration: underline;
+}
+
+form {
+    display: flex;
+}
+
+#inputBox {
+    width: 500px;
+    height: 100px;
+    font-size: 25px;
+    border: 4px solid aqua;
+    border-radius: 100px;  
+    background-color: rgb(198, 227, 228);
+    color:royalblue;
+    text-align: center;
+}
+
+@keyframes glowing {
+    0% {
+      background-color: var(--glow1);
+      box-shadow: 0 0 5px var(--glow1);
+    }
+    50% {
+      background-color: var(--glow2);
+      box-shadow: 0 0 20px var(--glow2);
+    }
+    100% {
+      background-color: var(--glow1);
+      box-shadow: 0 0 5px var(--glow1);
+    }
+}
+
+button {
+    background-color: var(--primary);
+    border-radius: 100px;
+    height: 100px;
+    width: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    box-shadow: inset 0 0 0 0.75em 0 var(--primary), 0 0 0 0.75em 0 var(--primary);
+    animation: glowing 1600ms infinite;
+}
+
+button:hover {
+    background-color: var(--glow2);
+    transition: 0.5s; 
+    cursor: pointer;
+    animation: none;
+    opacity: 0.5;
 }
