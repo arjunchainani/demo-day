@@ -1,5 +1,6 @@
 const inputBox = document.getElementById('inputBox'); 
 const submitButton = document.getElementById('submit_button');
+const inputContainer = document.getElementById('input_container');
 const bottom = document.getElementById('iaqi_container');
 const result = document.getElementById('result');
 const result2 = document.getElementById('result2');
@@ -140,10 +141,12 @@ function displayData(results) {
         console.log('pDiv', pDivs[i]);
         let statValue = stats[i];
         console.log('Statvalue:', statValue);
+        console.log('ID:', pDivs[i].id)
         pDivs[i].innerHTML += `- ${statValue}`;
+        pDivs[i].style.width = '80px';
         console.log('innerHTML:', pDivs[i]);
     }
-}
+}   
 
 function getPlaceID(response) {
     placeID = response.results[0].place_id;
@@ -228,6 +231,9 @@ submitButton.onclick = function(event) {
     event.preventDefault();
 
     bottom.scrollIntoView();
+
+    inputContainer.style.height = '330px';
+    bottom.style.height = '400px';
 
     city = parseText(inputBox.value);
 

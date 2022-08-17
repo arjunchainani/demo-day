@@ -22,7 +22,7 @@ body {
 
 #name {
     background-color: var(--primary);
-    height: 825px;
+    height: 800px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     display: flex;
@@ -50,15 +50,8 @@ h1 {
 }
 
 #input_container {
-    /*
-        @NOTE using responsive units (vw and vh) here.
-        learn more here: https://www.w3schools.com/cssref/css_units.asp
-    */
-    /* size and colors */
     background-color: var(--secondary);
-    
-    /* CSS box model */
-
+    height: 130px;
 }
 
 #result {
@@ -101,12 +94,11 @@ body {
     text-shadow: 5px 5px 5px #000000;
 }
 
-/* Change all these class names */
-
-#iaqi_content {
+#iaqi_container {
+    background-color: #197bbd;
     display: flex;
+    height: 0px;
     justify-content: center;
-    align-items: center;
 }
 
 #iaqi_stats {
@@ -115,10 +107,10 @@ body {
     height: 215px;
     text-align: left;
     padding: 5px 0;
-    background-color: #888888;
     border-radius: 5px;
     transition: 0.5s;
     justify-content: center;
+    border: 2px solid black;
 }
 
 #iaqi_stats div {
