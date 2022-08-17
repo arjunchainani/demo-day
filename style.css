@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
 }
 
 :root {
@@ -9,36 +9,40 @@
     --accent: #ff0000;
     --glow1: #173753;
     --glow2: #6daedb;
+    --text: #c1fff2;
 }
 
 body {
     background-color: #888888;
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #ffffff;
     text-shadow: 5px 5px 5px #000000;
     background-color: var(--secondary);
 }
 
 #name {
-    background-color: var(--primary);
+    background-image: url("images/aqi_image.png");
     height: 800px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: aqua;
 }
 
 h1 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 100px;
-    color: black;
+    color: aqua;
     font-weight: bold;
 }
 
 #discover {
-    font-size: 20px;
+    font-size: 30px;
+    text-shadow: none;
+    color: whitesmoke;
 }
 
 #input {
@@ -51,7 +55,9 @@ h1 {
 
 #input_container {
     background-color: var(--secondary);
-    height: 130px;
+    height: 10rem;
+    display: block;
+    /* overflow: auto; */
 }
 
 #result {
@@ -71,6 +77,17 @@ h1 {
     text-align: center;
 }
 
+.list { 
+    list-style-position: inside;
+}
+
+.intro_text {
+    color: var(--text);
+    text-decoration: underline;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 150%;
+}
+
 #entertainment_list,
 #shopping_list,
 #eating_list,
@@ -78,16 +95,15 @@ h1 {
     display: none;
 }
 
-/* Change all these class names */
-
 #iaqi_content {
-    display: flex;
+    margin-top: 20px;
+    display: block;
     justify-content: center;
     align-items: center;
 }
 
 body {
-    background-color: #888888;
+    background-color: #b30f7c;
     text-align: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #ffffff;
@@ -95,22 +111,25 @@ body {
 }
 
 #iaqi_container {
-    background-color: #197bbd;
+    background-color: #b30f7c;
+    margin-top: 50px;
     display: flex;
     height: 0px;
     justify-content: center;
 }
 
 #iaqi_stats {
+    background-color: rgba(68, 56, 243, 50);
     display: none;
     width: 400px;
-    height: 215px;
+    height: 235px;
     text-align: left;
     padding: 5px 0;
     border-radius: 5px;
     transition: 0.5s;
     justify-content: center;
     border: 2px solid black;
+    font-size: 24px;
 }
 
 #iaqi_stats div {
@@ -123,38 +142,38 @@ body {
 
 #o3 {
     width: 272px;
-    background-color: #00ff00;
+    background-color: #ff1e00;
     color: white;
     font-weight: bold;
     font-style:italic;
-    text-decoration: underline;
+    font-size: 15px;
 }
 
 #co {
     width: 220px;
-    background-color: #ff0000;
+    background-color: #ffa600;
     color: white;
     font-weight: bold;
     font-style:italic;
-    text-decoration: underline;
+    font-size: 15px;
 }
 
 #pm10 {
     width: 220px;
-    background-color: #0000ff;
+    background-color: #66ff00;
     color: white;
     font-weight: bold;
     font-style:italic;
-    text-decoration: underline;
+    font-size: 15px;
 }
 
 #pm25 {
     width: 200px;
-    background-color: #ff8800;
+    background-color: #00ffea;
     color: white;
     font-weight: bold;
     font-style:italic;
-    text-decoration: underline;
+    font-size: 15px;
 }
 
 #no2 {
@@ -163,16 +182,16 @@ body {
     color: white;
     font-weight: bold;
     font-style:italic;
-    text-decoration: underline;
+    font-size: 15px;
 }
 
 #so2 {
     width: 168px;
-    background-color: #00ffff;
+    background-color: #ff00d4;
     color: white;
     font-weight: bold;
     font-style:italic;
-    text-decoration: underline;
+    font-size: 15px;
 }
 
 form {

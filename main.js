@@ -3,24 +3,28 @@ const submitButton = document.getElementById('submit_button');
 const inputContainer = document.getElementById('input_container');
 const bottom = document.getElementById('iaqi_container');
 const result = document.getElementById('result');
-const result2 = document.getElementById('result2');
 const entertainmentList = document.getElementById('entertainment_list');
 const clarifier = document.getElementById('clarifier');
 const entertainmentOption1 = document.getElementById('location1');
 const entertainmentOption2 = document.getElementById('location2');
+const entertainmentContainer = document.getElementById('entertainment');
 const shoppingList = document.getElementById('shopping_list');
 const shoppingClarifier = document.getElementById('shopping_clarifier');
 const shoppingOption1 = document.getElementById('shopping_location1');
 const shoppingOption2 = document.getElementById('shopping_location2');
+const shoppingContainer = document.getElementById('shopping');
 const eatingList = document.getElementById('eating_list');
 const eatingClarifier = document.getElementById('eating_clarifier');
 const eatingOption1 = document.getElementById('eating_location1');
 const eatingOption2 = document.getElementById('eating_location2');
+const eatingContainer = document.getElementById('eating');
 const hotelList = document.getElementById('hotel_list');
 const hotelClarifier = document.getElementById('hotel_clarifier');
 const hotelOption1 = document.getElementById('hotel_location1');
 const hotelOption2 = document.getElementById('hotel_location2');
+const hotelContainer = document.getElementById('hotels');
 const iaqiContainer = document.getElementById('iaqi_stats');
+
 
 // Table divs
 const coDiv = document.getElementById('co');
@@ -32,7 +36,8 @@ const so2Div = document.getElementById('so2');
 let statDivs = document.querySelectorAll("#iaqi_stats div");
 let pDivs = document.querySelectorAll('#iaqi_stats div p');
 
-let city, orig;
+let city; 
+let orig;
 let placeID;
 let entertainment = [];
 let shopping = [];
@@ -56,8 +61,8 @@ const iaqiData = {
 
 function parseText(input) {
     // let splitText = input.split(' ');
-    // orig = input;
-    // // let parsed;  
+    orig = input;
+    // // let parsed;   
     // // console.log('Input before parsing:', input);
     // console.log('Split text:', splitText);
     // let parsed = splitText.join('%20');
@@ -93,7 +98,7 @@ function getAPIs() {
         })
         .then(displayInfo)
         .catch(function(error) {
-            console.log('Location not found 3');
+            console.log('Location not found 3:', error);
         })
     
         console.log('PlaceID: ', placeID);
@@ -111,7 +116,7 @@ function getPlaceInfoAPI(city) {
         .then(getPlaceID)
         .then(getAPIs)
         .catch(function(error) {
-            console.log('Location not found 2');
+            console.log('Location not found 2:', error);
         });
         
 }
@@ -127,8 +132,18 @@ function displayData(results) {
 
     let stats = [o3, co, pm10, pm25, no2, so2];
     
+    if (aqi > 100) {
+        result.style.color = 'red';
+        iaqiContainer
+    }
+    else if (aqi > 50) {
+        result.style.color = 'yellow';
+    }
+    else {
+        result.style.color = 'greenyellow';
+    }
+    
     result.innerHTML = 'Air Quality Index: ' + aqi;
-    result2.innerHTML = 'Indoor Air Quality Index - Carbon Monoxide: ' + co;
 
     iaqiContainer.style.display = 'block';
     console.log('Running if statement. Statdivs:', statDivs);
@@ -143,8 +158,11 @@ function displayData(results) {
         console.log('Statvalue:', statValue);
         console.log('ID:', pDivs[i].id)
         pDivs[i].innerHTML += `- ${statValue}`;
-        pDivs[i].style.width = '80px';
+        pDivs[i].style.width = '300px';
         console.log('innerHTML:', pDivs[i]);
+    }
+    if (statDivs.style.width > iaqiContainer.style.width) {
+        iaqiContainer.style.width = statDivs.style.width;
     }
 }   
 
@@ -176,10 +194,14 @@ function displayInfo(location) {
         }
     }
 
+    console.log('Orig:', orig);
+
     if (entertainment.length > 0) {
+        console.log('Displaying entertainment');
         clarifier.innerHTML = `Places to visit near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         entertainmentList.style.display = 'block';
         entertainmentOption1.innerHTML = entertainment[0];
+        console.log('InnerHTML Entertainment:', entertainmentOption1.innerHTML);
         if (entertainment.length > 1) {
             entertainmentOption2.innerHTML = entertainment[1];
         }
@@ -189,9 +211,11 @@ function displayInfo(location) {
     }
     
     if (shopping.length > 0) {
+        console.log('Displaying shopping');
         shoppingClarifier.innerHTML = `Places to shop near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         shoppingList.style.display = 'block';
         shoppingOption1.innerHTML = shopping[0];
+        console.log('InnerHTML Shopping:', shoppingOption1.innerHTML);
         if (shopping.length > 1) {
             shoppingOption2.innerHTML = shopping[1];
         }
@@ -201,9 +225,11 @@ function displayInfo(location) {
     }
         
     if (eating.length > 0) {
+        console.log('Displaying eating');
         eatingClarifier.innerHTML = `Places to eat near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         eatingList.style.display = 'block';
         eatingOption1.innerHTML = eating[0];
+        console.log('InnerHTML Eating:', eatingOption1.innerHTML);
         if (eating.length > 1) {
             eatingOption2.innerHTML = eating[1];
         }
@@ -214,9 +240,11 @@ function displayInfo(location) {
     }
     
     if (hotels.length > 0) {
+        console.log('Displaying hotels');
         hotelClarifier.innerHTML = `Places to stay near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         hotelList.style.display = 'block';
         hotelOption1.innerHTML = hotels[0];
+        console.log('InnerHTML Hotels:', hotelOption1.innerHTML);
         if (hotels.length > 1) {
             hotelOption2.innerHTML = hotels[1];
         }
@@ -232,7 +260,7 @@ submitButton.onclick = function(event) {
 
     bottom.scrollIntoView();
 
-    inputContainer.style.height = '330px';
+    inputContainer.style.height = '600px';
     bottom.style.height = '400px';
 
     city = parseText(inputBox.value);
