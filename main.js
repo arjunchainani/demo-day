@@ -123,12 +123,25 @@ function getPlaceInfoAPI(city) {
 
 function displayData(results) {
     aqi = results.data.aqi;
-    co = results.data.iaqi.co.v;
-    o3 = results.data.iaqi.o3.v;
-    pm10 = results.data.iaqi.pm10.v;
-    pm25 = results.data.iaqi.pm25.v;
-    no2 = results.data.iaqi.no2.v;
-    so2 = results.data.iaqi.so2.v;
+    if (results.data.iaqi.co !== undefined) {
+        co = results.data.iaqi.co.v;    
+    }
+    if (results.data.iaqi.o3 !== undefined) {
+        o3 = results.data.iaqi.o3.v;    
+    }
+    if (results.data.iaqi.pm10 !== undefined) {
+        pm10 = results.data.iaqi.pm10.v;
+    }
+    if (results.data.iaqi.pm25 !== undefined) {
+        pm25 = results.data.iaqi.pm25.v;    
+    }
+    if (results.data.iaqi.no2 !== undefined) {
+        no2 = results.data.iaqi.no2.v;    
+    }
+    if (results.data.iaqi.so2 !== undefined) {
+        so2 = results.data.iaqi.so2.v;    
+    }
+    
 
     let stats = [o3, co, pm10, pm25, no2, so2];
     
@@ -147,17 +160,34 @@ function displayData(results) {
 
     iaqiContainer.style.display = 'block';
     console.log('Running if statement. Statdivs:', statDivs);
+    let statValue;
+    let defined = [true, true, true, true, true];
     for (let i = 0; i < statDivs.length; i++) {
-        let statValue = stats[i];
+        if (stats[i] > 0) {
+            console.log('running if statement for', stats[i]);
+            statValue = stats[i];
+            defined[i] = true;
+        }
+        else {
+            statValue = 0;
+            defined[i] = false;
+        }
+        
         statDivs[i].style.width = statValue + "%";
     }
 
     for (let i = 0; i < pDivs.length; i++) {
-        console.log('pDiv', pDivs[i]);
         let statValue = stats[i];
-        console.log('Statvalue:', statValue);
-        console.log('ID:', pDivs[i].id)
-        pDivs[i].innerHTML += `- ${statValue}`;
+        console.log('value of defined', defined);
+
+        if (defined[i] == true) {
+            pDivs[i].innerHTML += `- ${statValue}`;
+        }
+        else {
+            console.log('running else statement for', stats[i]);
+            pDivs[i].innerHTML += '- N/A';
+        }
+        
         pDivs[i].style.width = '300px';
         console.log('innerHTML:', pDivs[i]);
     }
