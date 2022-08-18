@@ -161,7 +161,7 @@ function displayData(results) {
     iaqiContainer.style.display = 'block';
     console.log('Running if statement. Statdivs:', statDivs);
     let statValue;
-    let defined = [true, true, true, true, true];
+    let defined = [true, true, true, true, true, true];
     for (let i = 0; i < statDivs.length; i++) {
         if (stats[i] > 0) {
             console.log('running if statement for', stats[i]);
