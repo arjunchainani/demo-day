@@ -43,6 +43,7 @@ let entertainment = [];
 let shopping = [];
 let eating = [];
 let hotels = [];
+let unsafeDiv, unsafeHeader, unsafeBodyText;
 
 let o3, co, pm10, pm25, no2, so2, aqi;
 
@@ -121,6 +122,27 @@ function getPlaceInfoAPI(city) {
         
 }
 
+function unsafeLocation() {
+    // entertainmentContainer.style.display = 'none';
+    // shoppingContainer.style.display = 'none';
+    // eatingContainer.style.display = 'none';
+    // hotelContainer.style.display = 'none';
+
+    unsafeDiv = document.createElement('div');
+    unsafeHeader = document.createElement('h2');
+    unsafeBodyText = document.createElement('p');
+    unsafeHeader.innerHTML = 'THIS PLACE HAS VERY POOR AIR QUALITY!';
+    unsafeBodyText.innerHTML = `Bad air quality can lead to long term respiratory, cardiovascular, and other health issues. For this reason, we strongly advise against visiting ${city.charAt(0).toUpperCase() + city.slice(1)}`;
+    
+    unsafeDiv.classList.add('unsafe_container');
+    unsafeHeader.classList.add('unsafe_title');
+    unsafeBodyText.classList.add('unsafe_body');
+    
+    unsafeDiv.appendChild(unsafeHeader);
+    unsafeDiv.appendChild(unsafeBodyText);
+    document.body.insertBefore(unsafeDiv, entertainmentContainer);
+}
+
 function displayData(results) {
     aqi = results.data.aqi;
     if (results.data.iaqi.co !== undefined) {
@@ -147,7 +169,7 @@ function displayData(results) {
     
     if (aqi > 100) {
         result.style.color = 'red';
-        iaqiContainer
+        unsafeLocation();
     }
     else if (aqi > 50) {
         result.style.color = 'yellow';

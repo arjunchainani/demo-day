@@ -10,6 +10,7 @@
     --glow1: #173753;
     --glow2: #6daedb;
     --text: #c1fff2;
+    --unsafetext: #f3ca40;
 }
 
 body {
@@ -248,4 +249,30 @@ button:hover {
     padding-top: 20px;
     padding-left:40px;
     padding-bottom:20px;
+}
+
+@keyframes warning {
+    0% {
+        font-weight: 100;
+    }
+    50% {
+        font-weight: 800;
+    }
+    100% {
+        font-weight: 400;
+    }
+}
+
+.unsafe_container {
+    color: var(--unsafetext);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.unsafe_title {
+    animation: warning infinite;
+    font-size: 50px;
+}
+
+.unsafe_body {
+
 }
