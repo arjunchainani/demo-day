@@ -44,6 +44,8 @@ let shopping = [];
 let eating = [];
 let hotels = [];
 let unsafeDiv, unsafeHeader, unsafeBodyText;
+let largestBar = 0;
+let largestBarWidth;
 
 let o3, co, pm10, pm25, no2, so2, aqi;
 
@@ -131,8 +133,8 @@ function unsafeLocation() {
     unsafeDiv = document.createElement('div');
     unsafeHeader = document.createElement('h2');
     unsafeBodyText = document.createElement('p');
-    unsafeHeader.innerHTML = 'THIS PLACE HAS VERY POOR AIR QUALITY!';
-    unsafeBodyText.innerHTML = `Bad air quality can lead to long term respiratory, cardiovascular, and other health issues. For this reason, we strongly advise against visiting ${city.charAt(0).toUpperCase() + city.slice(1)}`;
+    unsafeHeader.innerHTML = 'WARNING: THIS PLACE HAS VERY POOR AIR QUALITY!';
+    unsafeBodyText.innerHTML = `Bad air quality can lead to long term respiratory, cardiovascular, and other health issues. For this reason, we strongly advise against visiting ${city.charAt(0).toUpperCase() + city.slice(1)}\n`;
     
     unsafeDiv.classList.add('unsafe_container');
     unsafeHeader.classList.add('unsafe_title');
@@ -140,7 +142,8 @@ function unsafeLocation() {
     
     unsafeDiv.appendChild(unsafeHeader);
     unsafeDiv.appendChild(unsafeBodyText);
-    document.body.insertBefore(unsafeDiv, entertainmentContainer);
+    console.log('Entertainment Container: ', entertainmentContainer);
+    inputContainer.insertBefore(unsafeDiv, entertainmentContainer);
 }
 
 function displayData(results) {
@@ -195,7 +198,9 @@ function displayData(results) {
             defined[i] = false;
         }
         
-        statDivs[i].style.width = statValue + "%";
+        // statDivs[i].style.width = statValue + "%";
+        statDivs[i].style.width = ((statValue/100)*400) + 'px';
+        console.log('Statdivs Width:', statDivs[i].style.width);
     }
 
     for (let i = 0; i < pDivs.length; i++) {
@@ -213,10 +218,8 @@ function displayData(results) {
         pDivs[i].style.width = '300px';
         console.log('innerHTML:', pDivs[i]);
     }
-    if (statDivs.style.width > iaqiContainer.style.width) {
-        iaqiContainer.style.width = statDivs.style.width;
-    }
-}   
+
+}  
 
 function getPlaceID(response) {
     placeID = response.results[0].place_id;

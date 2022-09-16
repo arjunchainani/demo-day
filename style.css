@@ -59,7 +59,8 @@ h1 {
     height: 10rem;
     display: block;
     width: 100%;
-    /* overflow: auto; */
+    text-align: center;
+    overflow: auto;
 }
 
 #result {
@@ -73,10 +74,6 @@ h1 {
 #result2 {
     font-size: 12px;
     font-weight: bold;
-}
-
-#input_container {
-    text-align: center;
 }
 
 .list { 
@@ -95,6 +92,10 @@ h1 {
 #eating_list,
 #hotel_list {
     display: none;
+}
+
+#hotels {
+    padding-bottom: 20px;
 }
 
 #iaqi_content {
@@ -123,7 +124,7 @@ body {
 #iaqi_stats {
     background-color: rgba(68, 56, 243, 50);
     display: none;
-    width: 400px;
+    width: 800px;
     height: 235px;
     text-align: left;
     padding: 5px 0;
@@ -274,5 +275,6 @@ button:hover {
 }
 
 .unsafe_body {
-
+    font-size: 20px;
+    padding-bottom: 3%;
 }
