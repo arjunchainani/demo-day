@@ -320,6 +320,8 @@ submitButton.onclick = function(event) {
 
     city = parseText(inputBox.value);
 
+    document.title = `${inputBox.value} Air Quality Statistics, Recommendations, and More - AirVision`
+
     getPlaceInfoAPI(city);
     iaqiContainer.style.display = 'flex';
 }
