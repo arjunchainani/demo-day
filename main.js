@@ -149,8 +149,8 @@ function setPopularSearches() {
                 parisItems[1].innerHTML = 'Unsafe';
             }
             else if (parisJson.data.aqi > 50) {
-                parisItems[0].style.color = 'yellow';
-                parisItems[1].style.color = 'yellow';
+                parisItems[0].style.color = '#a0a605';
+                parisItems[1].style.color = '#a0a605';
                 parisItems[1].innerHTML = 'Moderately safe';
             }
             else {
