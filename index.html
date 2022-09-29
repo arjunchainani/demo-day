@@ -8,7 +8,8 @@
     <title>Home - AirVision</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="/images/logo.png">
-    <script defer type="module" src="data.js"></script>
+    <script defer type="module" src="autocomplete/data.js"></script>
+    <script defer type="module" src="autocomplete/autocomplete.js"></script>
     <script defer type="module" src="main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous">
@@ -22,9 +23,13 @@
     </div>
     <div id="input_container">
         <section id="input">
-            <form>
-                <div><input id="inputBox" type="search" placeholder="Enter the name of a city/town here" autocomplete="address-level1"></div>
-                <div><button id="submit_button">Search</button></div>
+            <form autocomplete="off">
+                <div class="autocomplete">
+                    <input id="inputBox" type="search" placeholder=" Enter the name of a city/town here">
+                </div>
+                <div id="submission">
+                    <button id="submit_button">Search</button>
+                </div>
             </form>
         </section>
         <section id="results">
@@ -66,6 +71,9 @@
                 <li id="hotel_location2"></li>
             </ul>
         </section>
+    </div>
+    <div id="freq_container">
+
     </div>
     <div id="iaqi_container">
         <div id="iaqi_stats">Indoor Air Quality Statistics

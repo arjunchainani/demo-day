@@ -1,0 +1,1 @@
+let cities = ['New York', 'Shanghai', 'Beijing', 'Kuwait City', 'Al Ahmadi', 'Paris', 'London', 'Los Angeles', 'San Francisco', 'Seattle', 'Hong Kong'];

@@ -1,5 +1,6 @@
 const inputBox = document.getElementById('inputBox'); 
 const submitButton = document.getElementById('submit_button');
+const submitDiv = document.getElementById('submission');
 const inputContainer = document.getElementById('input_container');
 const bottom = document.getElementById('iaqi_container');
 const result = document.getElementById('result');
@@ -46,6 +47,7 @@ let hotels = [];
 let unsafeDiv, unsafeHeader, unsafeBodyText;
 let largestBar = 0;
 let largestBarWidth;
+let loading;
 
 let o3, co, pm10, pm25, no2, so2, aqi;
 
@@ -62,6 +64,8 @@ const iaqiData = {
     "aqi": aqi,
 }
 
+// autocomplete(inputBox, cities);
+
 function parseText(input) {
     // let splitText = input.split(' ');
     orig = input;
@@ -73,6 +77,14 @@ function parseText(input) {
 
     let newText = input.replaceAll(' ', '%20');
     return newText;
+}
+
+function loadingGraphic() {
+    loading = document.createElement('img');
+    loading.src = 'images/loading-gif2.gif';
+    loading.classList.add('loading');
+    submitButton.style.display = 'none';
+    submitDiv.appendChild(loading);
 }
 
 function getAPIs() {
@@ -308,12 +320,16 @@ function displayInfo(location) {
         }
     }
     
+    loading.style.display = 'none';
+    submitButton.style.display = '';
 }
 
 submitButton.onclick = function(event) {
     event.preventDefault();
 
     bottom.scrollIntoView();
+
+    loadingGraphic();
 
     inputContainer.style.height = '600px';
     bottom.style.height = '400px';
