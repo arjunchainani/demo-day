@@ -12,6 +12,7 @@
     --text: #c1fff2;
     --unsafetext: #f3ca40;
     --body: #b30f7c;
+    --frequentText: #efe9e7;
 }
 
 body {
@@ -41,10 +42,13 @@ body {
 }
 
 h1 {
-    font-family: hello-denver;
     font-size: 150px;
-    color: rgb(255, 94, 0);
     font-weight: bold;
+}
+
+#logo {
+    font-family: hello-denver;
+    color: rgb(255, 94, 0);
 }
 
 #discover {
@@ -118,6 +122,60 @@ body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #ffffff;
     text-shadow: 5px 5px 5px #000000;
+}
+
+#freq_container {
+    background-color: var(--frequentText);
+    color: black;
+    text-shadow: none;
+    padding-top: 20px;
+}
+
+table, tr, td {
+    /* border: 1px solid black; */
+    justify-content: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    padding: 50px;
+}
+
+.country {
+    border-right: 1px solid #000000;
+}
+
+#country1 {
+    border-bottom: 1px solid #000000;
+}
+
+#country2 {
+    border-bottom: 1px solid #000000;
+}
+
+#airqual1 {
+    border-bottom: 1px solid #000000;
+}
+
+#airqual2 {
+    border-bottom: 1px solid #000000;
+}
+
+#condition1 {
+    border-bottom: 1px solid #000000;
+}
+
+#condition2 {
+    border-bottom: 1px solid #000000;
+}
+
+
+.airqual {
+    border-right: 1px solid #000000;
 }
 
 #iaqi_container {
@@ -293,7 +351,7 @@ button:hover {
 
 .unsafe_body {
     font-size: 20px;
-    padding-bottom: 3%;
+    padding-bottom: 30px;
 }
 
 #sources h3 {

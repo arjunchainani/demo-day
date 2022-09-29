@@ -19,7 +19,7 @@
 
 <body>
     <div id="name">
-        <h1>WELCOME TO AIRVISION<br><p id="discover">Let's save our environment!</p></h1>
+        <h1>WELCOME TO <span id="logo">AIRVISION</span><br><p id="discover">Let's save our environment!</p></h1>
     </div>
     <div id="input_container">
         <section id="input">
@@ -73,7 +73,31 @@
         </section>
     </div>
     <div id="freq_container">
-
+        <section>
+            <h2>Popular Searches</h2>
+            <table>
+                <tr>
+                    <td>Country Name</td>
+                    <td>Air Quality Index</td>
+                    <td>Condition</td>
+                </tr>
+                <tr>
+                    <td class="country" id="country1">New York City</td>
+                    <td class="airqual" id="airqual1"><p class="nyc"></p></td>
+                    <td id="condition1" class="nyc"></td>
+                </tr>
+                <tr>
+                    <td class="country" id="country2">Beijing</td>
+                    <td class="airqual" id="airqual2"><p class="beijing"></p></td>
+                    <td id="condition2" class="beijing"></td>
+                </tr>
+                <tr>
+                    <td class="country" id="country3">Paris</td>
+                    <td class="airqual" id="airqual3"><p class="paris"></p></td>
+                    <td id="condition3" class="paris"></td>
+                </tr>
+            </table>
+        </section>
     </div>
     <div id="iaqi_container">
         <div id="iaqi_stats">Indoor Air Quality Statistics

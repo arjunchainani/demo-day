@@ -27,12 +27,17 @@ const hotelContainer = document.getElementById('hotels');
 const iaqiContainer = document.getElementById('iaqi_stats');
 
 
-// Table divs
+// graph divs
 const coDiv = document.getElementById('co');
 const pm10Div = document.getElementById('pm10');
 const pm25Div = document.getElementById('pm25');
 const no2Div = document.getElementById('no2');
 const so2Div = document.getElementById('so2');
+
+// table divs
+const nycItems = document.getElementsByClassName('nyc');
+const beijingItems = document.getElementsByClassName('beijing');
+const parisItems = document.getElementsByClassName('paris');
 
 let statDivs = document.querySelectorAll("#iaqi_stats div");
 let pDivs = document.querySelectorAll('#iaqi_stats div p');
@@ -44,7 +49,7 @@ let entertainment = [];
 let shopping = [];
 let eating = [];
 let hotels = [];
-let unsafeDiv, unsafeHeader, unsafeBodyText;
+let unsafeDiv, unsafeHeader, unsafeBodyText, unsafeMaskGraphic, unsafeMaskMessage;
 let largestBar = 0;
 let largestBarWidth;
 let loading;
@@ -65,6 +70,100 @@ const iaqiData = {
 }
 
 // autocomplete(inputBox, cities);
+
+function setPopularSearches() {
+    // basically fetches the API 3 times for the cities on the intro page; this code needs to be cleaned up a bit lol :)
+    let basicURL = `https://api.waqi.info/feed/`
+    let requestURL = `${basicURL}New%20York/?token=781e1354fc87695d73d45f65e933367e640764f3`
+    console.log("requestURL", requestURL);
+    fetch(requestURL)
+        .then(function(response) {
+            console.log('Successful fetch');
+            return response.json();
+        })
+        .then(function(nyJson) {
+            nycItems[0].innerHTML = nyJson.data.aqi;
+            if (nyJson.data.aqi > 100) {
+                nycItems[0].style.color = 'red';
+                nycItems[1].style.color = 'red';
+                nycItems[1].innerHTML = 'Unsafe';
+            }
+            else if (nyJson.data.aqi > 50) {
+                nycItems[0].style.color = 'yellow';
+                nycItems[1].style.color = 'yellow';
+                nycItems[1].innerHTML = 'Moderately safe';
+            }
+            else {
+                nycItems[0].style.color = 'green';
+                nycItems[1].style.color = 'green';
+                nycItems[1].innerHTML = 'Safe';
+            }
+        })
+        .catch(function(error) {
+            console.log('Location not found 1', error);
+        })
+
+    basicURL = `https://api.waqi.info/feed/`
+    requestURL = `${basicURL}Beijing/?token=781e1354fc87695d73d45f65e933367e640764f3`
+    console.log("requestURL", requestURL);
+    fetch(requestURL)
+        .then(function(response) {
+            console.log('Successful fetch');
+            return response.json();
+        })
+        .then(function(beijingJson) {
+            beijingItems[0].innerHTML = beijingJson.data.aqi;
+            if (beijingJson.data.aqi > 100) {
+                beijingItems[0].style.color = 'red';
+                beijingItems[1].style.color = 'red';
+                beijingItems[1].innerHTML = 'Unsafe';
+            }
+            else if (beijingJson.data.aqi > 50) {
+                beijingItems[0].style.color = 'yellow';
+                beijingItems[1].style.color = 'yellow';
+                beijingItems[1].innerHTML = 'Moderately safe';
+            }
+            else {
+                beijingItems[0].style.color = 'green';
+                beijingItems[1].style.color = 'green';
+                beijingItems[1].innerHTML = 'Safe';
+            }
+        })
+        .catch(function(error) {
+            console.log('Location not found 1', error);
+        })
+
+    basicURL = `https://api.waqi.info/feed/`
+    requestURL = `${basicURL}Paris/?token=781e1354fc87695d73d45f65e933367e640764f3`
+    console.log("requestURL", requestURL);
+    fetch(requestURL)
+        .then(function(response) {
+            console.log('Successful fetch');
+            return response.json();
+        })
+        .then(function(parisJson) {
+            parisItems[0].innerHTML = parisJson.data.aqi;
+            if (parisJson.data.aqi > 100) {
+                parisItems[0].style.color = 'red';
+                parisItems[1].style.color = 'red';
+                parisItems[1].innerHTML = 'Unsafe';
+            }
+            else if (parisJson.data.aqi > 50) {
+                parisItems[0].style.color = 'yellow';
+                parisItems[1].style.color = 'yellow';
+                parisItems[1].innerHTML = 'Moderately safe';
+            }
+            else {
+                parisItems[0].style.color = 'green';
+                parisItems[1].style.color = 'green';
+                parisItems[1].innerHTML = 'Safe';
+            }
+        })
+        .catch(function(error) {
+            console.log('Location not found 1', error);
+        })
+
+}
 
 function parseText(input) {
     // let splitText = input.split(' ');
@@ -90,7 +189,7 @@ function loadingGraphic() {
 function getAPIs() {
     const basicURL = `https://api.waqi.info/feed/`
     const requestURL = `${basicURL}${city}/?token=781e1354fc87695d73d45f65e933367e640764f3`
-    console.log(requestURL);
+    console.log("requestURL", requestURL);
     fetch(requestURL)
         .then(function(response) {
             console.log('Successful fetch');
@@ -145,15 +244,23 @@ function unsafeLocation() {
     unsafeDiv = document.createElement('div');
     unsafeHeader = document.createElement('h2');
     unsafeBodyText = document.createElement('p');
+    unsafeMaskGraphic = document.createElement('img');
+    unsafeMaskMessage = document.createElement('p');
     unsafeHeader.innerHTML = 'WARNING: THIS PLACE HAS VERY POOR AIR QUALITY!';
     unsafeBodyText.innerHTML = `Bad air quality can lead to long term respiratory, cardiovascular, and other health issues. For this reason, we strongly advise against visiting ${city.charAt(0).toUpperCase() + city.slice(1)}\n`;
-    
+    unsafeMaskGraphic.src = 'images/mask.png';
+    unsafeMaskMessage.innerHTML = `If you still plan to visit ${city.charAt(0).toUpperCase() + city.slice(1)}, we encourage you to WEAR A MASK!\n\n\n`;
+
     unsafeDiv.classList.add('unsafe_container');
     unsafeHeader.classList.add('unsafe_title');
     unsafeBodyText.classList.add('unsafe_body');
+    unsafeMaskGraphic.classList.add('unsafe_body');
+    unsafeMaskMessage.classList.add('unsafe_body');
     
     unsafeDiv.appendChild(unsafeHeader);
     unsafeDiv.appendChild(unsafeBodyText);
+    unsafeDiv.appendChild(unsafeMaskGraphic);
+    unsafeDiv.appendChild(unsafeMaskMessage);
     console.log('Entertainment Container: ', entertainmentContainer);
     inputContainer.insertBefore(unsafeDiv, entertainmentContainer);
 }
@@ -341,3 +448,5 @@ submitButton.onclick = function(event) {
     getPlaceInfoAPI(city);
     iaqiContainer.style.display = 'flex';
 }
+
+setPopularSearches();
