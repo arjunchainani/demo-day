@@ -327,7 +327,11 @@ function displayData(results) {
         console.log('value of defined', defined);
 
         if (defined[i] == true) {
-            pDivs[i].innerHTML += `- ${statValue}`;
+            // note: this part of the code is super messy and i plan to clean it up eventually
+            //pDivs[i].innerHTML += `- ${statValue}`;
+            if (i = 0) {
+                pDivs[i].innerHTML += `O3 - ${statValue}`;
+            }
         }
         else {
             console.log('running else statement for', stats[i]);

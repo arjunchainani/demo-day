@@ -21,7 +21,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #ffffff;
     text-shadow: 5px 5px 5px #000000;
-    background-color: var(--secondary);
+    /* background-color: var(--secondary); */
 }
 
 @font-face {
@@ -131,6 +131,10 @@ body {
     padding-top: 20px;
 }
 
+#freq_container h2 {
+    font-size: 40px;
+}
+
 table, tr, td {
     /* border: 1px solid black; */
     justify-content: center;
@@ -139,6 +143,11 @@ table, tr, td {
 table {
     margin-left: auto;
     margin-right: auto;
+    font-size: 25px;
+}
+
+#table_labels {
+    font-size: 35px;
 }
 
 td {
@@ -362,9 +371,23 @@ button:hover {
 }
 
 #sources ul {
-    padding-bottom: 10px;
+    padding-bottom: 50px;
 }
 
 #sources a {
     color: #ceae73;
+}
+
+#about {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: green;
+}
+
+#about-link {
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 400px;
+    height: 50px;
+    animation: none;
 }

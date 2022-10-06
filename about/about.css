@@ -1,0 +1,57 @@
+body {
+    background-color: #252022;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@font-face {
+    font-family: 'hello-denver';
+    src: url('/fonts/hellodenverdisplaybold_v1.6.ttf') format('truetype');
+}
+
+#name {
+    background-image: url('../images/background-3.jpg');
+    background-size: 2000px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aqua;
+    margin: 0px;
+}
+
+h1 {
+    font-size: 150px;
+    font-weight: bold;
+}
+
+#logo {
+    font-family: hello-denver;
+    color: rgb(255, 94, 0);
+}
+
+#info img {
+    width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 20px;
+}
+
+#info p {
+    text-align: center;
+    color: whitesmoke;
+}
+
+#info a {
+    color: aqua;
+}
+
+#body {
+    color: whitesmoke;
+    text-align: center;
+    font-weight: bold;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 30px;
+}
