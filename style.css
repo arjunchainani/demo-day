@@ -69,9 +69,7 @@ h1 {
     background-color: var(--secondary);
     height: 10rem;
     display: block;
-    width: 100%;
-    /* text-align: left; */
-    overflow: auto;
+    width: 100%;    
 }
 
 #result {

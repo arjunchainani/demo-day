@@ -1,3 +1,4 @@
+/* Designed for iPhone 12 Screen - 390 x 844 px */
 @media(max-width: 860px) {
     #name {
         height: 400px;
@@ -13,13 +14,22 @@
         font-size: 20px;
     }
 
+    #input_container {
+        width: 400px;
+    }
+
     #inputBox {
         width: 200px;
         padding-left: none;
+        font-size: 20px;
     }
 
     #inputBox::-webkit-input-placeholder {
         font-size: 18px;
+    }
+
+    #freq_container {
+        width: 400px;
     }
 
     td {
@@ -28,5 +38,13 @@
 
     #condition_label, #condition1, #condition2, #condition3 {
         display: none;
+    }
+
+    #iaqi_container {
+        padding-left: 10px;
+    }
+
+    #about {
+        width: 400px;
     }
 }

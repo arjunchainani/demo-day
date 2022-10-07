@@ -40,7 +40,7 @@ const beijingItems = document.getElementsByClassName('beijing');
 const parisItems = document.getElementsByClassName('paris');
 
 let statDivs = document.querySelectorAll("#iaqi_stats div");
-let pDivs = document.querySelectorAll('#iaqi_stats div p');
+let pDivs = document.getElementsByClassName('pa');
 
 let city; 
 let orig;
@@ -69,6 +69,17 @@ const iaqiData = {
     "aqi": aqi,
 }
 
+const iaqiKey = {
+    num0: "O3",
+    num1: "Co",
+    num2: "PM10",
+    num3: "PM2.5",
+    num4: "NO2",
+    num5: "SO2"
+}
+
+console.log(iaqiKey.num0);
+
 // autocomplete(inputBox, cities);
 
 function setPopularSearches() {
@@ -89,8 +100,8 @@ function setPopularSearches() {
                 nycItems[1].innerHTML = 'Unsafe';
             }
             else if (nyJson.data.aqi > 50) {
-                nycItems[0].style.color = 'yellow';
-                nycItems[1].style.color = 'yellow';
+                nycItems[0].style.color = '#a0a605';
+                nycItems[1].style.color = '#a0a605';
                 nycItems[1].innerHTML = 'Moderately safe';
             }
             else {
@@ -119,8 +130,8 @@ function setPopularSearches() {
                 beijingItems[1].innerHTML = 'Unsafe';
             }
             else if (beijingJson.data.aqi > 50) {
-                beijingItems[0].style.color = 'yellow';
-                beijingItems[1].style.color = 'yellow';
+                beijingItems[0].style.color = '#a0a605';
+                beijingItems[1].style.color = '#a0a605';
                 beijingItems[1].innerHTML = 'Moderately safe';
             }
             else {
@@ -322,25 +333,25 @@ function displayData(results) {
         console.log('Statdivs Width:', statDivs[i].style.width);
     }
 
-    for (let i = 0; i < pDivs.length; i++) {
-        let statValue = stats[i];
-        console.log('value of defined', defined);
+    let statValue1 = stats[0];
+    let statValue2 = stats[1];
+    let statValue3 = stats[2];
+    let statValue4 = stats[3];
+    let statValue5 = stats[4];
+    let statValue6 = stats[5];
 
-        if (defined[i] == true) {
-            // note: this part of the code is super messy and i plan to clean it up eventually
-            //pDivs[i].innerHTML += `- ${statValue}`;
-            if (i = 0) {
-                pDivs[i].innerHTML += `O3 - ${statValue}`;
-            }
-        }
-        else {
-            console.log('running else statement for', stats[i]);
-            pDivs[i].innerHTML += '- N/A';
-        }
-        
-        pDivs[i].style.width = '300px';
-        console.log('innerHTML:', pDivs[i]);
-    }
+    pDivs[0].innerHTML = `O3 - ${statValue1}`;
+    pDivs[0].style.width = '300px';
+    pDivs[1].innerHTML = `Co - ${statValue2}`;
+    pDivs[1].style.width = '300px';
+    pDivs[2].innerHTML = `PM10 - ${statValue3}`;
+    pDivs[2].style.width = '300px';
+    pDivs[3].innerHTML = `PM2.5 - ${statValue4}`;
+    pDivs[3].style.width = '300px';
+    pDivs[4].innerHTML = `NO2 - ${statValue5}`;
+    pDivs[4].style.width = '300px';
+    pDivs[5].innerHTML = `SO2 - ${statValue6}`;
+    pDivs[5].style.width = '300px';
 
 }  
 
@@ -441,6 +452,8 @@ submitButton.onclick = function(event) {
     bottom.scrollIntoView();
 
     loadingGraphic();
+
+    inputContainer.style.overflow = 'auto';
 
     inputContainer.style.height = '600px';
     bottom.style.height = '400px';
