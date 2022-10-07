@@ -1,0 +1,32 @@
+@media(max-width: 860px) {
+    #name {
+        height: 400px;
+        width: 400px;
+    }
+
+    #name h1 {
+        font-size: 45px;
+        word-wrap: break-word;     
+    }
+
+    #name p {
+        font-size: 20px;
+    }
+
+    #inputBox {
+        width: 200px;
+        padding-left: none;
+    }
+
+    #inputBox::-webkit-input-placeholder {
+        font-size: 18px;
+    }
+
+    td {
+        padding: 20px;
+    }
+
+    #condition_label, #condition1, #condition2, #condition3 {
+        display: none;
+    }
+}
