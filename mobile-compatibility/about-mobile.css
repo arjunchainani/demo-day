@@ -1,0 +1,29 @@
+/* Designed for iPhone 12 Screen - 390 x 844 px */
+@media(max-width: 860px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    #name {
+        background-size: 500px;
+        height: 150px;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;    
+    }
+
+    p {
+        font-size: 80%;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        font-size: 20px;
+    }
+}

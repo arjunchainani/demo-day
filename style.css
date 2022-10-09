@@ -70,6 +70,7 @@ h1 {
     height: 10rem;
     display: block;
     width: 100%;    
+    /* display: flex; */
 }
 
 #result {
@@ -78,6 +79,7 @@ h1 {
     font-weight: bold;
     font-style: italic;
     text-decoration: underline;
+    /* justify-content: */
 }
 
 #result2 {
@@ -87,6 +89,7 @@ h1 {
 
 .list { 
     list-style-position: inside;
+    list-style-type: none;
 }
 
 .intro_text {
@@ -105,6 +108,18 @@ h1 {
 
 #hotels {
     padding-bottom: 20px;
+}
+
+.copy-buttons {
+    width: 60px;
+    height: 20px;
+    border-radius: 100px;
+    margin-left: 10px;
+}
+
+.containers {
+    display: flex;
+    justify-content: center;
 }
 
 #iaqi_content {
@@ -304,7 +319,7 @@ form {
     }
 }
 
-button {
+#submit_button {
     background-color: var(--primary);
     border-radius: 100px;
     height: 100px;
@@ -315,7 +330,7 @@ button {
     animation: glowing 1600ms infinite;
 }
 
-button:hover {
+#submit_button:hover {
     background-color: var(--glow2);
     transition: 0.5s; 
     cursor: pointer;
@@ -388,4 +403,10 @@ button:hover {
     width: 400px;
     height: 50px;
     animation: none;
+    background-color: #50c9ce;
+}
+
+#about-link:hover {
+    background-color: darkcyan;
+    cursor: pointer;
 }

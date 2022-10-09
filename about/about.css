@@ -34,7 +34,6 @@ h1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
     padding-top: 20px;
 }
 
@@ -54,4 +53,27 @@ h1 {
     padding-left: 40px;
     padding-right: 40px;
     font-size: 30px;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+#return-container {
+    display: flex;
+    justify-content: center;
+}
+
+#return {
+    border-radius: 100px;
+    width: 800px;
+    height: 100px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    background-color: #50c9ce;
+}
+
+#return:hover {
+    background-color: darkcyan;
+    cursor: pointer;
 }

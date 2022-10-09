@@ -7,24 +7,47 @@ const result = document.getElementById('result');
 const entertainmentList = document.getElementById('entertainment_list');
 const clarifier = document.getElementById('clarifier');
 const entertainmentOption1 = document.getElementById('location1');
+const entertainmentOption1Container = document.getElementById('location1container');
 const entertainmentOption2 = document.getElementById('location2');
+const entertainmentOption2Container = document.getElementById('location2container');
 const entertainmentContainer = document.getElementById('entertainment');
 const shoppingList = document.getElementById('shopping_list');
 const shoppingClarifier = document.getElementById('shopping_clarifier');
 const shoppingOption1 = document.getElementById('shopping_location1');
+const shoppingOption1Container = document.getElementById('shopping1container');
 const shoppingOption2 = document.getElementById('shopping_location2');
+const shoppingOption2Container = document.getElementById('shopping2container');
 const shoppingContainer = document.getElementById('shopping');
 const eatingList = document.getElementById('eating_list');
 const eatingClarifier = document.getElementById('eating_clarifier');
 const eatingOption1 = document.getElementById('eating_location1');
+const eatingOption1Container = document.getElementById('eating1container');
 const eatingOption2 = document.getElementById('eating_location2');
+const eatingOption2Container = document.getElementById('eating2container');
 const eatingContainer = document.getElementById('eating');
 const hotelList = document.getElementById('hotel_list');
 const hotelClarifier = document.getElementById('hotel_clarifier');
 const hotelOption1 = document.getElementById('hotel_location1');
+const hotelOption1Container = document.getElementById('hotel1container');
 const hotelOption2 = document.getElementById('hotel_location2');
+const hotelOption2Container = document.getElementById('hotel2container');
 const hotelContainer = document.getElementById('hotels');
 const iaqiContainer = document.getElementById('iaqi_stats');
+
+// Copy to clipboard buttons
+const entertainmentCopyBtn1 = document.createElement('button');
+const entertainmentCopyBtn2 = document.createElement('button');
+const shoppingCopyBtn1 = document.createElement('button');
+const shoppingCopyBtn2 = document.createElement('button');
+const eatingCopyBtn1 = document.createElement('button');
+const eatingCopyBtn2 = document.createElement('button');
+const hotelCopyBtn1 = document.createElement('button');
+const hotelCopyBtn2 = document.createElement('button');
+
+let copyButtons = [entertainmentCopyBtn1, entertainmentCopyBtn2, shoppingCopyBtn1, shoppingCopyBtn2, eatingCopyBtn1, eatingCopyBtn2, hotelCopyBtn1, hotelCopyBtn2];
+for (let element of copyButtons) {
+    element.innerText = 'Copy';
+}
 
 
 // graph divs
@@ -340,17 +363,53 @@ function displayData(results) {
     let statValue5 = stats[4];
     let statValue6 = stats[5];
 
-    pDivs[0].innerHTML = `O3 - ${statValue1}`;
+    if (statValue1) {
+        pDivs[0].innerHTML = `O3 - ${statValue1}`;
+    }
+    else {
+        pDivs[0].innerHTML = 'O3 - N/A';
+    }
+
+    if (statValue2) {
+        pDivs[1].innerHTML = `Co - ${statValue2}`;
+    }
+    else {
+        pDivs[1].innerHTML = 'Co - N/A';
+    }
+
+    if (statValue3) {
+        pDivs[2].innerHTML = `PM10 - ${statValue3}`;
+    }
+    else {
+        pDivs[2].innerHTML = 'PM10 - N/A';
+    }
+    
+    if (statValue4) {
+        pDivs[3].innerHTML = `PM2.5 - ${statValue4}`;
+    }
+    else {
+        pDivs[3].innerHTML = 'PM2.5 - N/A';
+    }
+
+    if (statValue5) {
+        pDivs[4].innerHTML = `NO2 - ${statValue5}`;
+    }
+    else {
+        pDivs[4].innerHTML = 'NO2 - N/A';
+    }
+
+    if (statValue6) {
+        pDivs[5].innerHTML = `SO2 - ${statValue6}`;
+    }
+    else {
+        pDivs[5].innerHTML = 'SO2 - N/A';
+    }
+
     pDivs[0].style.width = '300px';
-    pDivs[1].innerHTML = `Co - ${statValue2}`;
     pDivs[1].style.width = '300px';
-    pDivs[2].innerHTML = `PM10 - ${statValue3}`;
     pDivs[2].style.width = '300px';
-    pDivs[3].innerHTML = `PM2.5 - ${statValue4}`;
     pDivs[3].style.width = '300px';
-    pDivs[4].innerHTML = `NO2 - ${statValue5}`;
     pDivs[4].style.width = '300px';
-    pDivs[5].innerHTML = `SO2 - ${statValue6}`;
     pDivs[5].style.width = '300px';
 
 }  
@@ -390,8 +449,25 @@ function displayInfo(location) {
         clarifier.innerHTML = `Places to visit near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         entertainmentList.style.display = 'block';
         entertainmentOption1.innerHTML = entertainment[0];
-        console.log('InnerHTML Entertainment:', entertainmentOption1.innerHTML);
+
+        entertainmentCopyBtn1.classList.add('copy-buttons');
+        entertainmentOption1Container.appendChild(entertainmentCopyBtn1);
+
+        entertainmentCopyBtn1.onclick = function() {
+            navigator.clipboard.writeText(entertainmentOption1.innerHTML)
+                .then(function() {})
+        }
+        
+        console.log('InnerHTML Entertainment:', entertainmentOption1.innerText);
         if (entertainment.length > 1) {
+            entertainmentCopyBtn2.classList.add('copy-buttons');
+            entertainmentOption2Container.appendChild(entertainmentCopyBtn2);
+
+            entertainmentCopyBtn2.onclick = function() {
+                navigator.clipboard.writeText(entertainmentOption2.innerHTML)
+                    .then(function() {})
+            }
+
             entertainmentOption2.innerHTML = entertainment[1];
         }
         else {
@@ -403,9 +479,26 @@ function displayInfo(location) {
         console.log('Displaying shopping');
         shoppingClarifier.innerHTML = `Places to shop near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         shoppingList.style.display = 'block';
+
+        shoppingCopyBtn1.classList.add('copy-buttons');
+        shoppingOption1Container.appendChild(shoppingCopyBtn1);
+
+        shoppingCopyBtn1.onclick = function() {
+            navigator.clipboard.writeText(shoppingOption1.innerHTML)
+                .then(function() {})
+        }
+
         shoppingOption1.innerHTML = shopping[0];
         console.log('InnerHTML Shopping:', shoppingOption1.innerHTML);
         if (shopping.length > 1) {
+            shoppingCopyBtn2.classList.add('copy-buttons');
+            shoppingOption2Container.appendChild(shoppingCopyBtn2);
+
+            shoppingCopyBtn2.onclick = function() {
+                navigator.clipboard.writeText(shoppingOption2.innerHTML)
+                    .then(function() {})
+            }
+
             shoppingOption2.innerHTML = shopping[1];
         }
         else {
@@ -417,9 +510,26 @@ function displayInfo(location) {
         console.log('Displaying eating');
         eatingClarifier.innerHTML = `Places to eat near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         eatingList.style.display = 'block';
+
+        eatingCopyBtn1.classList.add('copy-buttons');
+        eatingOption1Container.appendChild(eatingCopyBtn1);
+
+        eatingCopyBtn1.onclick = function() {
+            navigator.clipboard.writeText(eatingOption1.innerHTML)
+                .then(function() {})
+        }
         eatingOption1.innerHTML = eating[0];
         console.log('InnerHTML Eating:', eatingOption1.innerHTML);
+        
         if (eating.length > 1) {
+            eatingCopyBtn2.classList.add('copy-buttons');
+            eatingOption2Container.appendChild(eatingCopyBtn2);
+
+            eatingCopyBtn2.onclick = function() {
+                navigator.clipboard.writeText(eatingOption2.innerHTML)
+                    .then(function() {})
+            }
+            
             eatingOption2.innerHTML = eating[1];
         }
         
@@ -432,9 +542,27 @@ function displayInfo(location) {
         console.log('Displaying hotels');
         hotelClarifier.innerHTML = `Places to stay near ${orig.charAt(0).toUpperCase() + orig.slice(1)}`;
         hotelList.style.display = 'block';
+
+        hotelCopyBtn1.classList.add('copy-buttons');
+        hotelOption1Container.appendChild(hotelCopyBtn1);
+
+        hotelCopyBtn1.onclick = function() {
+            navigator.clipboard.writeText(hotelOption1.innerHTML)
+                .then(function() {})
+        }
+
         hotelOption1.innerHTML = hotels[0];
         console.log('InnerHTML Hotels:', hotelOption1.innerHTML);
+        
         if (hotels.length > 1) {
+            hotelCopyBtn2.classList.add('copy-buttons');
+            hotelOption2Container.appendChild(hotelCopyBtn2);
+
+            hotelCopyBtn2.onclick = function() {
+                navigator.clipboard.writeText(hotelOption2.innerHTML)
+                    .then(function() {})
+            }
+
             hotelOption2.innerHTML = hotels[1];
         }
         else {
