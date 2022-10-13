@@ -28,8 +28,25 @@
         font-size: 18px;
     }
 
+    .unsafe_body {
+        width: 100px;
+        height: auto;
+    }
+
+    #unsafeP {
+        padding-left: 150px;
+    }
+
+    #unsafeP2 {
+        padding-left: 150px;
+    }
+
     #freq_container {
         width: 400px;
+    }
+
+    #freq_container h2 {
+        font-size: 50px;
     }
 
     td {
@@ -42,6 +59,14 @@
 
     #iaqi_container {
         padding-left: 10px;
+    }
+
+    #iaqi_stats {
+        width: 350px;
+    }
+
+    .graph_bars {
+        max-width: fit-content;
     }
 
     #about {

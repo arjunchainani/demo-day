@@ -290,6 +290,9 @@ function unsafeLocation() {
     unsafeBodyText.classList.add('unsafe_body');
     unsafeMaskGraphic.classList.add('unsafe_body');
     unsafeMaskMessage.classList.add('unsafe_body');
+
+    unsafeBodyText.setAttribute('id', 'unsafeP2');
+    unsafeMaskMessage.setAttribute('id', 'unsafeP');
     
     unsafeDiv.appendChild(unsafeHeader);
     unsafeDiv.appendChild(unsafeBodyText);
@@ -297,6 +300,13 @@ function unsafeLocation() {
     unsafeDiv.appendChild(unsafeMaskMessage);
     console.log('Entertainment Container: ', entertainmentContainer);
     inputContainer.insertBefore(unsafeDiv, entertainmentContainer);
+}
+
+function clearUnsafe() {
+    unsafeHeader.innerHTML = '';
+    unsafeBodyText.innerHTML = '';
+    unsafeMaskGraphic.innerHTML = '';
+    unsafeMaskMessage.innerHTML = '';
 }
 
 function displayData(results) {
@@ -576,6 +586,8 @@ function displayInfo(location) {
 
 submitButton.onclick = function(event) {
     event.preventDefault();
+
+    // clearUnsafe();
 
     bottom.scrollIntoView();
 

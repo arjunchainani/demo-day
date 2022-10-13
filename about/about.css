@@ -59,6 +59,14 @@ ul {
     list-style-position: inside;
 }
 
+#author {
+    color: rgb(194, 166, 166);
+    font-size: 20px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;    
+}
+
 #return-container {
     display: flex;
     justify-content: center;
