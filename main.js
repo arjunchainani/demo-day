@@ -82,6 +82,8 @@ let entertainmentSpliceCount, shoppingSpliceCount, eatingSpliceCount, hotelSplic
 
 let o3, co, pm10, pm25, no2, so2, aqi;
 
+let searchCounter = 0;
+
 const iaqiData = {
     "stats": {
         "o3": o3,
@@ -318,10 +320,11 @@ function unsafeLocation() {
 }
 
 function clearUnsafe() {
-    unsafeHeader.innerHTML = '';
-    unsafeBodyText.innerHTML = '';
-    unsafeMaskGraphic.innerHTML = '';
-    unsafeMaskMessage.innerHTML = '';
+    console.log('CLEARING UNSAFE MESSAGE');
+    unsafeHeader.style.display = 'none';
+    unsafeBodyText.style.display = 'none';
+    unsafeMaskGraphic.style.display = 'none';
+    unsafeMaskMessage.style.display = 'none';
 }
 
 function displayData(results) {
@@ -620,9 +623,13 @@ function displayInfo(location) {
 submitButton.onclick = function(event) {
     event.preventDefault();
 
-    clearResults();
+    searchCounter++;
 
-    // clearUnsafe();
+    if (searchCounter > 1) {
+        clearUnsafe();
+    }
+
+    clearResults();
 
     bottom.scrollIntoView();
 
