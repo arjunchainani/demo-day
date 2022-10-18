@@ -33,6 +33,7 @@ const hotelOption2 = document.getElementById('hotel_location2');
 const hotelOption2Container = document.getElementById('hotel2container');
 const hotelContainer = document.getElementById('hotels');
 const iaqiContainer = document.getElementById('iaqi_stats');
+const answersContainer = document.getElementById('answers_container');
 
 // Copy to clipboard buttons
 const entertainmentCopyBtn1 = document.createElement('button');
@@ -77,6 +78,8 @@ let largestBar = 0;
 let largestBarWidth;
 let loading;
 
+let entertainmentSpliceCount, shoppingSpliceCount, eatingSpliceCount, hotelSpliceCount;
+
 let o3, co, pm10, pm25, no2, so2, aqi;
 
 const iaqiData = {
@@ -104,6 +107,18 @@ const iaqiKey = {
 console.log(iaqiKey.num0);
 
 // autocomplete(inputBox, cities);
+
+function clearResults() {
+    result.innerHTML = '';
+    entertainmentOption1.innerHTML = '';
+    entertainmentOption2.innerHTML = '';
+    shoppingOption1.innerHTML = '';
+    shoppingOption2.innerHTML = '';
+    eatingOption1.innerHTML = '';
+    eatingOption2.innerHTML = '';
+    hotelOption1.innerHTML = '';
+    hotelOption2.innerHTML = '';
+}
 
 function setPopularSearches() {
     // basically fetches the API 3 times for the cities on the intro page; this code needs to be cleaned up a bit lol :)
@@ -299,7 +314,7 @@ function unsafeLocation() {
     unsafeDiv.appendChild(unsafeMaskGraphic);
     unsafeDiv.appendChild(unsafeMaskMessage);
     console.log('Entertainment Container: ', entertainmentContainer);
-    inputContainer.insertBefore(unsafeDiv, entertainmentContainer);
+    inputContainer.insertBefore(unsafeDiv, answersContainer);
 }
 
 function clearUnsafe() {
@@ -432,23 +447,41 @@ function displayInfo(location) {
     for (let i = 0; i < location.features.length; i++) {
         console.log('Currently iterating through: ', location.features[i]);
 
+        entertainmentSpliceCount = 1;
+        shoppingSpliceCount = 1;
+        eatingSpliceCount = 1;
+        hotelSpliceCount = 1;
+
         for (let j = 0; j < location.features[i].properties.categories.length; j++) {
             if (location.features[i].properties.categories[j] == 'entertainment') {
-                entertainment.push(location.features[i].properties.formatted);
-                console.log('Added to entertainment');
+                entertainment.splice(entertainmentSpliceCount, 1, location.features[i].properties.formatted);
+                console.log('Added', location.features[i].properties.formatted, 'to entertainment');
+                entertainmentSpliceCount++;
+                console.log('New Entertainment Splice Count:', entertainmentSpliceCount);
+                console.log('New Entertainment Array:', entertainment);
             }
             else if (location.features[i].properties.categories[j] == 'commercial.department_store') {
-                shopping.push(location.features[i].properties.formatted);
+                shopping.splice(shoppingSpliceCount, 1, location.features[i].properties.formatted);
                 console.log('Added to shopping');
+                shoppingSpliceCount++;
+                console.log('New Shopping Splice Count:', shoppingSpliceCount)
+                console.log('New Shopping Array:', shopping);
             }
             else if (location.features[i].properties.categories[j] == 'catering') {
-                eating.push(location.features[i].properties.formatted);
+                eating.splice(eatingSpliceCount, 1, location.features[i].properties.formatted);
                 console.log('Added to eating');
+                eatingSpliceCount++;
+                console.log('New Eating Splice Count:', eatingSpliceCount)
+                console.log('New Eating Array:', eating);
             }
             else if (location.features[i].properties.categories[j] == 'accommodation.hotel') {
-                hotels.push(location.features[i].properties.formatted);
+                hotels.splice(hotelSpliceCount, 1, location.features[i].properties.formatted);
                 console.log('Added to hotels');
+                hotelSpliceCount++;
+                console.log('New HOtels Splice Count:', hotelSpliceCount);
+                console.log('New Hotels Array:', hotels);
             }
+
         }
     }
 
@@ -586,6 +619,8 @@ function displayInfo(location) {
 
 submitButton.onclick = function(event) {
     event.preventDefault();
+
+    clearResults();
 
     // clearUnsafe();
 

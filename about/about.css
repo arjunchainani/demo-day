@@ -57,6 +57,7 @@ h1 {
 
 ul {
     list-style-position: inside;
+    list-style: none;
 }
 
 #author {
