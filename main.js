@@ -321,10 +321,13 @@ function unsafeLocation() {
 
 function clearUnsafe() {
     console.log('CLEARING UNSAFE MESSAGE');
-    unsafeHeader.style.display = 'none';
-    unsafeBodyText.style.display = 'none';
-    unsafeMaskGraphic.style.display = 'none';
-    unsafeMaskMessage.style.display = 'none';
+    if (unsafeHeader && unsafeBodyText && unsafeMaskMessage && unsafeMaskGraphic) {
+        unsafeHeader.style.display = 'none';
+        unsafeBodyText.style.display = 'none';
+        unsafeMaskGraphic.style.display = 'none';
+        unsafeMaskMessage.style.display = 'none';
+    }
+    
 }
 
 function displayData(results) {
@@ -450,10 +453,10 @@ function displayInfo(location) {
     for (let i = 0; i < location.features.length; i++) {
         console.log('Currently iterating through: ', location.features[i]);
 
-        entertainmentSpliceCount = 1;
-        shoppingSpliceCount = 1;
-        eatingSpliceCount = 1;
-        hotelSpliceCount = 1;
+        entertainmentSpliceCount = 0;
+        shoppingSpliceCount = 0;
+        eatingSpliceCount = 0;
+        hotelSpliceCount = 0;
 
         for (let j = 0; j < location.features[i].properties.categories.length; j++) {
             if (location.features[i].properties.categories[j] == 'entertainment') {
@@ -625,6 +628,7 @@ submitButton.onclick = function(event) {
 
     searchCounter++;
 
+    console.log('Search Counter:', searchCounter);
     if (searchCounter > 1) {
         clearUnsafe();
     }
