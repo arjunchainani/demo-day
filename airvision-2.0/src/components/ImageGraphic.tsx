@@ -1,10 +1,20 @@
+import aqiImage from "./../../public/aqi_image.png";
+
 interface Props {
-  imagePath: string;
+  imageNum: number;
   styling: string;
 }
 
-const ImageGraphic = ({ imagePath, styling }: Props) => {
-  return <div>ImageGraphic</div>;
+const ImageGraphic = ({ imageNum, styling }: Props) => {
+  const imageCollection = [aqiImage];
+
+  return (
+    <img
+      src={imageCollection[imageNum]}
+      className={styling}
+      alt="Unable to Load Image"
+    ></img>
+  );
 };
 
 export default ImageGraphic;
