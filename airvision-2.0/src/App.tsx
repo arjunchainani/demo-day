@@ -10,10 +10,13 @@ function App() {
 
   return (
     <div>
-      <Background imgPath={"aqiImage"} styling="background">
+      <Background styling="background background1" id="home_bg">
         <Logo styling="logo" />
         <ImageGraphic imageNum={0} styling="img_graphic"></ImageGraphic>
-        <ScrollButton direction={1} />
+        <ScrollButton direction={1} href="#main_bg" />
+      </Background>
+      <Background styling="background background2" id="main_bg">
+        <></>
       </Background>
     </div>
   );
