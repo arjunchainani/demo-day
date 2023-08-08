@@ -1,20 +1,22 @@
+import loadEnvVars from './env';
+
+const [GEOAPIFY_KEY, WAQI_KEY] = loadEnvVars();
+
 async function APIRequest(city: string, api: number) {
     const requestURLs = {
-        "geoapify": `https://api.geoapify.com/v1/geocode/search?text=${city}&type=city&format=json&apiKey=0762c43c3f6547c5874939855cdeebec`,
-        "waqi": `https://api.waqi.info/feed/${city}/?token=781e1354fc87695d73d45f65e933367e640764f3`,
+        "geoapify": `https://api.geoapify.com/v1/geocode/search?text=${city}&type=city&format=json&apiKey=${GEOAPIFY_KEY}`,
+        "waqi": `https://api.waqi.info/feed/${city}/?token=${WAQI_KEY}`,
     };
 
     const RequestList = [
-        `https://api.geoapify.com/v1/geocode/search?text=${city}&type=city&format=json&apiKey=0762c43c3f6547c5874939855cdeebec`,
-        `https://api.waqi.info/feed/${city}/?token=781e1354fc87695d73d45f65e933367e640764f3`,
+        `https://api.geoapify.com/v1/geocode/search?text=${city}&type=city&format=json&apiKey=${GEOAPIFY_KEY}`,
+        `https://api.waqi.info/feed/${city}/?token=${WAQI_KEY}`,
     ]
     
     return new Promise((resolve, reject) => {
         fetch(RequestList[api])
-            .then(function(response) {
-                if (api === 0) {
-                    resolve(response.json());
-                }
+            .then((response) => {
+                resolve(response.json());
             })
             .catch((e) => reject(e));
     });

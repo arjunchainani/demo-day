@@ -4,6 +4,7 @@ import Background from "./components/Background";
 import Logo from "./components/Logo";
 import ImageGraphic from "./components/ImageGraphic";
 import ScrollButton from "./components/ScrollButton";
+import APIRequest from "./../backend/fetch";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,7 +17,12 @@ function App() {
         <ScrollButton direction={1} href="#main_bg" />
       </Background>
       <Background styling="background background2" id="main_bg">
-        <></>
+        <button
+          onClick={async () => {
+            let result = await APIRequest("Paris", 0);
+            console.log(result.results[0].place_id);
+          }}
+        ></button>
       </Background>
     </div>
   );
