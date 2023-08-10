@@ -1,4 +1,5 @@
 import loadEnvVars from './env';
+import GeoApify from './interfaces';
 
 const [GEOAPIFY_KEY, WAQI_KEY] = loadEnvVars();
 
@@ -13,6 +14,8 @@ async function APIRequest(city: string, api: number) {
         `https://api.waqi.info/feed/${city}/?token=${WAQI_KEY}`,
     ]
     
+    console.log(`Querying ${RequestList[api]}`)
+
     return new Promise((resolve, reject) => {
         fetch(RequestList[api])
             .then((response) => {

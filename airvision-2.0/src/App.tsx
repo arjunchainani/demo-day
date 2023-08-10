@@ -1,13 +1,20 @@
 import { useState } from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+
+// Components
 import Background from "./components/Background";
 import Logo from "./components/Logo";
 import ImageGraphic from "./components/ImageGraphic";
 import ScrollButton from "./components/ScrollButton";
+import Card from "./components/Card";
+
+// Backend
 import APIRequest from "./../backend/fetch";
+import GeoApify from "../backend/interfaces";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const popularCities = ["New York", "Shanghai", "Paris"];
 
   return (
     <div>
@@ -17,12 +24,16 @@ function App() {
         <ScrollButton direction={1} href="#main_bg" />
       </Background>
       <Background styling="background background2" id="main_bg">
-        <button
+        {/* <button
           onClick={async () => {
-            let result = await APIRequest("Paris", 0);
-            console.log(result.results[0].place_id);
+            let result = await APIRequest("New York", 0);
+            console.log(result);
           }}
-        ></button>
+        ></button> */}
+        <div className="popular_title">
+          <h1 className="popular_title_h1">Popular Searches</h1>
+        </div>
+        <Card cities={popularCities}></Card>
       </Background>
     </div>
   );
