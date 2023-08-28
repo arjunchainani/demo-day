@@ -81,6 +81,8 @@ html {
   margin-left: 235px;
   margin-right: 10px;
   margin-top: 30px;
+
+  border-radius: 20px;
 }
 
 .card_container {
@@ -94,4 +96,22 @@ html {
   grid-column-end: 6;
   text-align: center;
   margin-top: 20px;
+}
+
+.good_air {
+  color: green;
+  text-align: center;
+  font-size: 50px;
+}
+
+.medium_air {
+  color: yellow;
+  text-align: center;
+  font-size: 50px;
+}
+
+.poor_air {
+  color: red;
+  text-align: center;
+  font-size: 50px;
 }

@@ -14,7 +14,7 @@ import APIRequest from "./../backend/fetch";
 import GeoApify from "../backend/interfaces";
 
 function App() {
-  const popularCities = ["New York", "Shanghai", "Paris"];
+  const popularCities = ["London", "Shanghai", "Paris"];
 
   return (
     <div>
