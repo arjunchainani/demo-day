@@ -136,3 +136,62 @@ export interface WAQI {
     }
     status: string;
 }
+
+export interface PlaceFeature {
+    geometry: {
+        coordinates: number[];
+        type: string;
+    };
+    properties: {
+        address_line1: string;
+        address_line2: string;
+        categories: string[];
+        city: string;
+        city_block: string;
+        country: string;
+        country_code: string;
+        datasource: {
+            attribution: string;
+            license: string;
+            raw: {
+                addr_city: string;
+                addr_postcode: number; 
+                addr_street: string;
+                building: string;
+                dog: string;
+                internet_access: string;
+                name: string;
+                name_zh: string;
+                opening_hours: string;
+                osm_id: number;
+                osm_type: string;
+                phone: string;
+                shop: string;
+                website: string;
+                wheelchair: string;
+                wikidata: string;
+                wikipedia: string;
+            };
+            sourcename: string;
+            url: string;
+        };
+        details: string[];
+        district: string;
+        formatted: string;
+        lat: number;
+        lon: number;
+        name: string;
+        place_id: string;
+        postcode: string;
+        region: string;
+        state: string;
+        street: string;
+        suburb: string;
+    };
+    type: string;
+}
+
+export interface FeatureCollection {
+    features: PlaceFeature[];
+    type: string;
+}

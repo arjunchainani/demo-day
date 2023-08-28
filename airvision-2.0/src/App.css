@@ -75,6 +75,16 @@ html {
   cursor: pointer;
 }
 
+.card:hover {
+  cursor: pointer;
+  transform: translateY(-10px);
+  transition: 1s;
+}
+
+.card:not(:hover) {
+  transition: 1s;
+}
+
 .card_block {
   width: 18rem;
   
