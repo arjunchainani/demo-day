@@ -6,6 +6,8 @@ import GeoApify, {
   WAQI,
 } from "../../backend/interfaces";
 import "../App.css";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 interface Props {
   cities: string[];
@@ -130,37 +132,66 @@ const Card = ({ cities }: Props) => {
     }
   }
 
+  const [showModal, setShowModal] = useState({
+    city_one: false,
+    city_two: false,
+    city_three: false,
+  });
+
+  const handleClose = (event) => {
+    
+  };
+
   return (
-    <div className="card_container">
-      {allCities.map((city) => (
-        <div className="card card_block" key={city.city}>
-          <img src="..." className="card-img-top" alt={city.city}></img>
-          <div className="card-body">
-            <h5 className="card-title">{city.city}</h5>
-            <p className="card-text">
-              AQI:
-              <br></br>
-              <span
-                className={
-                  city.aqi == 0
-                    ? ""
-                    : city.aqi < 50
-                    ? "good_air"
-                    : city.aqi > 100 && city.aqi < 150
-                    ? "medium_air"
-                    : "poor_air"
-                }
-              >
-                {city.aqi != 0 ? city.aqi : "Still Loading"}
-              </span>
-            </p>
-            <a href="#" className="btn btn-primary">
-              Go somewhere
-            </a>
+    <>
+      <div className="card_container">
+        {allCities.map((city) => (
+          <div className="card card_block" key={city.city}>
+            <img src="..." className="card-img-top" alt={city.city}></img>
+            <div className="card-body">
+              <h5 className="card-title">{city.city}</h5>
+              <p className="card-text">
+                AQI:
+                <br></br>
+                <span
+                  className={
+                    city.aqi == 0
+                      ? ""
+                      : city.aqi < 50
+                      ? "good_air"
+                      : city.aqi > 100 && city.aqi < 150
+                      ? "medium_air"
+                      : "poor_air"
+                  }
+                >
+                  {city.aqi != 0 ? city.aqi : "Still Loading"}
+                </span>
+              </p>
+              <a href="#" className="btn btn-primary">
+                More Info...
+              </a>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+      {allCities.map((city) => {
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+          data-city={city.city}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Modal Title</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>I will not close.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="primary">Close</Button>
+          </Modal.Footer>
+        </Modal>;
+      })}
+    </>
   );
 };
 
